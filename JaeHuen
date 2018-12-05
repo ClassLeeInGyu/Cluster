@@ -1,0 +1,84 @@
+// back-end서버 만들기, 구조체로 제품 목록 저장 기능
+// 제품 설명 개별 편집, 삭제 기능, 로그인 기능
+// 데이터 베이스, 서버 푸시 기능
+// jsp? PHP? http?
+// 시스템 구성도
+
+#include <stdio.h>
+#include <string.h>
+#include <time.h>
+
+#define MAX 100
+
+struct product {
+    char name[20];
+    int year, mon, day, stock;
+    //char place[50];
+};
+
+void save_product()
+{
+    struct product prd[MAX];
+    static int i = 0;
+    int a;
+
+    printf("제품 이름 : ");
+    scanf("%s", &prd[i].name);
+    printf("유통기한 년 : ");
+    scanf("%d", &prd[i].year);
+    printf("유통기한 월 : ");
+    scanf("%d", &prd[i].mon);
+    printf("유통기한 일 : ");
+    scanf("%d", &prd[i].day);
+    printf("수량 : ");
+    scanf("%d", &prd[i].stock);
+
+    FILE *wfp = fopen("data.txt", "a+");
+    for(a=0;a<i+1;a++)
+    {
+        fprintf(wfp, "%-20s %4d %2d %2d %2d\n", 
+        prd[i].name, prd[i].year, prd[i].mon, prd[i].day, prd[i].stock);
+    }
+    fclose(wfp);
+    i++;
+}
+
+void view_product()
+{
+    FILE *wfp;
+
+    wfp = fopen("data.txt", "r+");
+    if(wfp == NULL)
+    {
+        printf("error: 'data.txt' 파일이 존재하지 않습니다.\n");
+    }
+
+    fread(wfp)
+
+}
+
+
+int main()
+{
+    int num;
+    struct product prd[MAX];
+    
+    while(1)
+    {
+        printf("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■\n");
+        printf("■ 1.제품입력 2.제품목록보기 3.제품수정 4.프로그램 종료 ■\n");
+        printf("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■\n");
+        printf("입력 : ");
+        scanf("%d", &num);
+    
+        if(num == 1)
+        {
+            save_product();
+        }
+        else if(num == 4)
+        {
+            break;
+        }
+    }
+    return 0;
+}
