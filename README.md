@@ -7,3 +7,4 @@ UI 설계서 및 메뉴 구성도
 소스 코드
 
 http://survivalking.tistory.com/1
+http://sqlitebrowser.org/
