@@ -5,3 +5,5 @@ UI 설계서 및 메뉴 구성도
 시스템 구성도
 플로우 차트
 소스 코드
+
+http://survivalking.tistory.com/1
